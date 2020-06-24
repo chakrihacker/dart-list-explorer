@@ -1,7 +1,10 @@
 <template>
   <div>
     <p>
-      <label for="methodoptions">{{$t('methodOptions', 'I need to')}} {{ methodType && $t(`methodTypes.${methodType}`) }}</label>
+      <label for="methodoptions"
+        >{{ $t("methodOptions", "I need to") }}
+        {{ methodType && $t(`methodTypes.${methodType}`) }}</label
+      >
       <select id="methodoptions" name="select" v-model="selected">
         <option value="" disabled selected>...</option>
         <option v-for="option in options" :key="option.desc" :value="option">
@@ -9,17 +12,22 @@
         </option>
       </select>
     </p>
-    <method-base v-show="isSelected" :urlPath="selected.name">
-      <span v-if="selected.name === 'length'" slot="title">Array.{{selected.name}}</span>
-      <span v-else slot="title">Array.{{selected.name}}()</span>
+    <method-base
+      v-show="isSelected"
+      :urlPath="selected.name === 'ignore' ? selected.customUrl : selected.name"
+    >
+      <span v-if="selected.name === 'ignore'" slot="title"
+        >List {{ selected.customName }}</span
+      >
+      <span v-else slot="title">List.{{ selected.name }}()</span>
       <span slot="desc" v-html="selected.desc"></span>
     </method-base>
   </div>
 </template>
 
 <script>
-import MethodBase from './MethodBase.vue'
-import {mapState} from 'vuex'
+import MethodBase from "./MethodBase.vue";
+import { mapState } from "vuex";
 
 export default {
   components: {
@@ -37,20 +45,20 @@ export default {
   },
   data() {
     return {
-      selected: ''
-    }
+      selected: ""
+    };
   },
   computed: {
     isSelected() {
-      return this.$store.state.selectedMethod
+      return this.$store.state.selectedMethod;
     }
   },
   watch: {
     selected() {
-      this.$store.commit('selectionMethod', this.selected)
+      this.$store.commit("selectionMethod", this.selected);
     }
   }
-}
+};
 </script>
 
 <style scoped>

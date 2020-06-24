@@ -2,11 +2,13 @@
   <aside>
     <div class="usage-code usage1">
       <p>
-        <span>let arr = [5, 1, 8];</span><br>
-        <span v-if="selectedUsage"
+        <span>List&lt;dynamic&gt; list = [5, 1, 8];</span><br />
+        <span
+          v-if="selectedUsage"
           class="exampleoutput"
           ref="ex"
-          v-html="selectedUsage.example">
+          v-html="selectedUsage.example"
+        >
         </span>
       </p>
     </div>
@@ -14,98 +16,96 @@
       <h3 style="margin-top: 50px">Output</h3>
       <div class="usage-code">
         <p>
-          <span
-            class="exampleoutput2"
-            ref="ex2"
-            v-html="selectedUsage.output">
+          <span class="exampleoutput2" ref="ex2" v-html="selectedUsage.output">
           </span>
         </p>
-      </div><!--usage-code-->
+      </div>
+      <!--usage-code-->
     </div>
   </aside>
 </template>
 
 <script>
-import { TweenLite, TimelineMax, Back, Power4 } from 'gsap'
+import { TweenLite, TimelineMax, Back, Power4 } from "gsap";
 
 export default {
   methods: {
     typeOut() {
-      let split = new SplitText(this.$refs.ex, { type: 'chars' }),
-        split2 = new SplitText(this.$refs.ex2, { type: 'chars' }),
-        tl = new TimelineMax()
+      let split = new SplitText(this.$refs.ex, { type: "chars" }),
+        split2 = new SplitText(this.$refs.ex2, { type: "chars" }),
+        tl = new TimelineMax();
 
-      tl.add('start')
+      tl.add("start");
       tl.to(this.$refs.ex, 0.1, {
         opacity: 1
-      })
+      });
       tl.staggerFromTo(
         split.chars,
         0.1,
         {
           opacity: 0,
           scale: 0,
-          color: '#aeded4',
-          transformOrigin: '50% 50%'
+          color: "#aeded4",
+          transformOrigin: "50% 50%"
         },
         {
           opacity: 1,
           scale: 1,
-          color: '#fff',
-          transformOrigin: '50% 50%',
+          color: "#fff",
+          transformOrigin: "50% 50%",
           ease: Power4.easeOut
         },
         0.03,
-        'start+=0'
-      )
+        "start+=0"
+      );
       tl.staggerTo(
         split.chars,
         0.1,
         {
-          color: '#aeded4',
+          color: "#aeded4",
           ease: Back.easeIn
         },
         0.03,
-        'start+=0.1'
-      )
+        "start+=0.1"
+      );
 
       tl.to(this.$refs.ex2, 0.1, {
         opacity: 1
-      })
+      });
       tl.staggerFromTo(
         split2.chars,
         0.1,
         {
           opacity: 0,
           scale: 0,
-          color: '#aeded4',
-          transformOrigin: '50% 50%'
+          color: "#aeded4",
+          transformOrigin: "50% 50%"
         },
         {
           opacity: 1,
           scale: 1,
-          color: '#fff',
-          transformOrigin: '50% 50%',
+          color: "#fff",
+          transformOrigin: "50% 50%",
           ease: Power4.easeOut
         },
         0.03,
-        'start1+=0'
-      )
+        "start1+=0"
+      );
       tl.staggerTo(
         split2.chars,
         0.1,
         {
-          color: '#ecc2a4',
+          color: "#ecc2a4",
           ease: Back.easeIn
         },
         0.03,
-        'start1+=0.1'
-      )
+        "start1+=0.1"
+      );
     }
   },
   computed: {
     selectedUsage() {
-      return this.$store.state.selectedMethod
+      return this.$store.state.selectedMethod;
     }
   },
   watch: {
@@ -113,14 +113,14 @@ export default {
       if (this.selectedUsage) {
         TweenMax.set([this.$refs.ex, this.$refs.ex2], {
           opacity: 0
-        })
+        });
         setTimeout(() => {
-          this.typeOut()
-        }, 500)
+          this.typeOut();
+        }, 500);
       }
     }
   }
-}
+};
 </script>
 
 <style>
