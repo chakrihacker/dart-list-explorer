@@ -3,15 +3,7 @@
     <h2><slot name="title" /></h2>
     <p class="desc"><slot name="desc" /></p>
     <p class="link">
-      <em
-        ><a
-          :href="
-            `https://api.dart.dev/stable/2.8.4/dart-core/List/${urlPath}.html`
-          "
-          target="_blank"
-          >see the docs &#8594;</a
-        ></em
-      >
+      <em><a :href="`${url}`" target="_blank">see the docs &#8594;</a></em>
     </p>
   </div>
 </template>
@@ -21,8 +13,14 @@ export default {
   name: "method-base",
   props: {
     urlPath: {
-      type: String,
-      default: "length"
+      type: String
+    }
+  },
+  computed: {
+    url: function() {
+      return this.urlPath.startsWith("https")
+        ? this.urlPath
+        : `https://api.dart.dev/stable/2.8.4/dart-core/List/${this.urlPath}.html`;
     }
   }
 };

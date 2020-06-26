@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <app-github-corner />
-    <LocaleSwitcher />
+    <!-- <LocaleSwitcher /> -->
     <main>
       <section class="a">
         <h1>Dart List Explorer</h1>

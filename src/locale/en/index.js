@@ -17,7 +17,7 @@ export default {
     "find items",
     "walk over items",
     "return a string",
-    "order an array",
+    "order a list",
     "something else"
   ]
   // other text can be added here

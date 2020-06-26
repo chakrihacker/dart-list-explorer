@@ -2,7 +2,8 @@
   <aside>
     <div class="usage-code usage1">
       <p>
-        <span>List&lt;dynamic&gt; list = [5, 1, 8];</span><br />
+        <span v-if="initIgnore">List&lt;dynamic&gt; list = [5, 1, 8];</span>
+        <br />
         <span
           v-if="selectedUsage"
           class="exampleoutput"
@@ -29,6 +30,12 @@
 import { TweenLite, TimelineMax, Back, Power4 } from "gsap";
 
 export default {
+  props: {
+    initIgnore: {
+      type: Boolean,
+      default: true
+    }
+  },
   methods: {
     typeOut() {
       let split = new SplitText(this.$refs.ex, { type: "chars" }),
