@@ -1,8 +1,8 @@
 {
-  "name": "array-explorer",
+  "name": "dart-list-explorer",
   "version": "1.0.0",
-  "description": "A resource to help figure out what array method would be best to use at any given time",
-  "author": "sdras <sarah.drasner@gmail.com>",
+  "description": "A resource to help figure out what dart method would be best to use at any given time",
+  "author": "chakrihacker <chanty.chakravarthy@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
